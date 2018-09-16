@@ -11,6 +11,14 @@
         <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
         </div>
         <div class="ssxs" style="width:18.75rem;height: 5rem;background-color:salmon;display: none;">
+            <input type="text" name="price" id="0"/>
+        </div>
+    </li>
+
+    <li class="big" style="margin-bottom: 1.87rem;">
+        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
+        </div>
+        <div class="ssxs" style="width:18.75rem;height: 5rem;background-color:salmon;display: none;">
             <input type="text" name="price" id="1"/>
         </div>
     </li>
@@ -22,7 +30,6 @@
             <input type="text" name="price" id="2"/>
         </div>
     </li>
-
     <li class="big" style="margin-bottom: 1.87rem;">
         <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
         </div>
@@ -30,6 +37,21 @@
             <input type="text" name="price" id="3"/>
         </div>
     </li>
+    <li class="big" style="margin-bottom: 1.87rem;">
+        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
+        </div>
+        <div class="ssxs" style="width:18.75rem;height: 5rem;background-color:salmon;display: none;">
+            <input type="text" name="price" id="4"/>
+        </div>
+    </li>
+    <li class="big" style="margin-bottom: 1.87rem;">
+        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
+        </div>
+        <div class="ssxs" style="width:18.75rem;height: 5rem;background-color:salmon;display: none;">
+            <input type="text" name="price" id="5"/>
+        </div>
+    </li>
+
 </ul>
 </body>
 <script type="text/javascript">
@@ -53,8 +75,11 @@
 
     $("input").on("change", function () {
         $(this).addClass("testClass");
-        for (var i = 0; i < $("input[class='testClass']").length; i++) {
-            alert($("input[class='testClass']").eq(i).val());
+        var size = $('.big').length;
+        for (var i = 0; i < size; i++) {
+            if ($('#' + i).hasClass("testClass")) {
+                alert($('#' + i).val());
+            }
         }
     })
 
