@@ -7,53 +7,82 @@
 </head>
 <body>
 <ul>
+    <li class="big" style="margin-bottom: 1.87rem;">
+        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
+        </div>
+        <div class="ssxs" style="width:18.75rem;height: 5rem;background-color:salmon;display: none;">
+            <input type="text" name="price" id="0"/>
+        </div>
+    </li>
 
+    <li class="big" style="margin-bottom: 1.87rem;">
+        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
+        </div>
+        <div class="ssxs" style="width:18.75rem;height: 5rem;background-color:salmon;display: none;">
+            <input type="text" name="price" id="1"/>
+        </div>
+    </li>
 
-    <!--<li class="big" style="margin-bottom: 1.87rem;">-->
-        <!--<div class="2" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">-->
-        <!--</div>-->
-        <!--<div class="ssxs" style="width:18.75rem;height: 5rem;background-color:salmon;display: none;">-->
-            <!--<input type="text" name="price" id="price" />-->
-        <!--</div>-->
-    <!--</li>-->
-    <!--<li class="big" style="margin-bottom: 1.87rem;">-->
-        <!--<div class="3" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">-->
-        <!--</div>-->
-        <!--<div class="ssxs" style="width:18.75rem;height: 5rem;background-color:salmon;display: none;">-->
-            <!--<input type="text" name="price" id="price" />-->
-        <!--</div>-->
-    <!--</li>-->
+    <li class="big" style="margin-bottom: 1.87rem;">
+        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
+        </div>
+        <div class="ssxs" style="width:18.75rem;height: 5rem;background-color:salmon;display: none;">
+            <input type="text" name="price" id="2"/>
+        </div>
+    </li>
+    <li class="big" style="margin-bottom: 1.87rem;">
+        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
+        </div>
+        <div class="ssxs" style="width:18.75rem;height: 5rem;background-color:salmon;display: none;">
+            <input type="text" name="price" id="3"/>
+        </div>
+    </li>
+    <li class="big" style="margin-bottom: 1.87rem;">
+        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
+        </div>
+        <div class="ssxs" style="width:18.75rem;height: 5rem;background-color:salmon;display: none;">
+            <input type="text" name="price" id="4"/>
+        </div>
+    </li>
+    <li class="big" style="margin-bottom: 1.87rem;">
+        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
+        </div>
+        <div class="ssxs" style="width:18.75rem;height: 5rem;background-color:salmon;display: none;">
+            <input type="text" name="price" id="5"/>
+        </div>
+    </li>
+
 </ul>
 </body>
 <script type="text/javascript">
-//231
-    $(".big").on("click",function(){
-        if(!$(this).hasClass("checked")){
-            $(this).children(".ssxs").css('display','block');
+    $(".big").on("click", function () {
+        if (!$(this).hasClass("checked")) {
+            $(this).children(".ssxs").css('display', 'block');
             $(this).addClass("checked");
-            $(this).children("#djq").css('background-color','yellowgreen');
-            $(".ssxs").on("click","input",function(event){
-                // event.stopPropagation();
-                $(this).siblings().css('background-color','yellowgreen');
-            });
-            $("input").on("keyup",function(){
-                if(!$(this).parent().hasClass("checked")){
-                    $(this).addClass("checked");
-                    if($(this).hasClass("checked")){
-                        $("input[class='checked']").each(function(){
-                            var th=$(this).val();
-                            alert(th);
-                        });
-                    }
-                }
-            })
-        }
-        else{
+            $(this).children(".djq").css('background-color', 'yellowgreen');
+        } else {
             $(this).removeClass("checked");
-            $(this).children("#djq").css('background-color','cadetblue');
-            $(this).children(".ssxs").css('display','none');
+            $(this).children(".ssxs").children("input").attr("class", "");
+            $(this).children(".djq").css('background-color', 'cadetblue');
+            $(this).children(".ssxs").css('display', 'none');
+        }
+    });
+
+    $(".ssxs").on("click", "input", function (event) {
+        event.stopPropagation();
+        $(this).siblings().css('background-color', 'yellowgreen');
+    });
+
+    $("input").on("change", function () {
+        $(this).addClass("testClass");
+        var size = $('.big').length;
+        for (var i = 0; i < size; i++) {
+            if ($('#' + i).hasClass("testClass")) {
+                alert($('#' + i).val());
+            }
         }
     })
+
 
 </script>
 </html>
