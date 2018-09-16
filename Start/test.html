@@ -9,48 +9,32 @@
 <ul>
     <li class="big" style="margin-bottom: 1.87rem;">
         <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
+            <b name="price">12</b>
+
         </div>
         <div class="ssxs" hidden style="width:18.75rem;height: 5rem;background-color:salmon;">
-            <input type="text" name="price" id="0"/>
+            <input type="number" value="0" name="cnt"/>
+        </div>
+    </li>
+    <li class="big" style="margin-bottom: 1.87rem;">
+        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
+            <b name="price">12</b>
+
+        </div>
+        <div class="ssxs" hidden style="width:18.75rem;height: 5rem;background-color:salmon;">
+            <input type="number" value="0" name="cnt"/>
+        </div>
+    </li>
+    <li class="big" style="margin-bottom: 1.87rem;">
+        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
+            <b name="price">12</b>
+
+        </div>
+        <div class="ssxs" hidden style="width:18.75rem;height: 5rem;background-color:salmon;">
+            <input type="number" value="0" name="cnt"/>
         </div>
     </li>
 
-    <li class="big" style="margin-bottom: 1.87rem;">
-        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
-        </div>
-        <div class="ssxs"  hidden style="width:18.75rem;height: 5rem;background-color:salmon;">
-            <input type="text" name="price" id="1"/>
-        </div>
-    </li>
-
-    <li class="big" style="margin-bottom: 1.87rem;">
-        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
-        </div>
-        <div class="ssxs" hidden style="width:18.75rem;height: 5rem;background-color:salmon;">
-            <input type="text" name="price" id="2"/>
-        </div>
-    </li>
-    <li class="big" style="margin-bottom: 1.87rem;">
-        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
-        </div>
-        <div class="ssxs" hidden style="width:18.75rem;height: 5rem;background-color:salmon;">
-            <input type="text" name="price" id="3"/>
-        </div>
-    </li>
-    <li class="big" style="margin-bottom: 1.87rem;">
-        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
-        </div>
-        <div class="ssxs" hidden style="width:18.75rem;height: 5rem;background-color:salmon;">
-            <input type="text" name="price" id="4"/>
-        </div>
-    </li>
-    <li class="big" style="margin-bottom: 1.87rem;">
-        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
-        </div>
-        <div class="ssxs" hidden style="width:18.75rem;height: 5rem;background-color:salmon;">
-            <input type="text" name="price" id="5"/>
-        </div>
-    </li>
 
 </ul>
 </body>
@@ -66,19 +50,19 @@
         }
     });
     //防止冒泡
-    $(".ssxs").on("click", "input", function (event) {
+    $(".ssxs").on("click", function (event) {
         event.stopPropagation();
     });
     //input框修改时的change事件
     $("input").on("change", function () {
-        var sum=0;
+        var sum = 0;
         //选择ssxs可见的,input框
-        $(".ssxs:visible  > input[name='price']").each(function () {
-            sum+=$(this).val()*1.0;
+        $(".ssxs:visible").each(function () {
+            var cnt = $(this).children("input[name='cnt']").val() * 1.0;
+            var djq = $(this).siblings('.djq').children("b[name='price']").html() * 1.0;
+            sum += cnt * djq;
         });
         console.log(sum);
-
     })
-
 </script>
 </html>
