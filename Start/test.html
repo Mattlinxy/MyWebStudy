@@ -71,10 +71,12 @@
     });
     //input框修改时的change事件
     $("input").on("change", function () {
+        var sum=0;
         //选择ssxs可见的,input框
         $(".ssxs:visible  > input[name='price']").each(function () {
-            alert($(this).val());
+            sum+=$(this).val()*1.0;
         });
+        console.log(sum);
 
     })
 
