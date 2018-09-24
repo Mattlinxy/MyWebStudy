@@ -6,64 +6,44 @@
     <title></title>
 </head>
 <body>
-<ul>
-    <li class="big" style="margin-bottom: 1.87rem;">
-        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
-            <b name="price">12</b>
+<span>ajax1</span>
+<input type="text" id="ajax1" value="">
+<span>ajax2</span>
+<input type="text" id="ajax2" value="">
+<input type="button" onclick="submit()" value="提交">
 
-        </div>
-        <div class="ssxs" hidden style="width:18.75rem;height: 5rem;background-color:salmon;">
-            <input type="number" value="0" name="cnt"/>
-        </div>
-    </li>
-    <li class="big" style="margin-bottom: 1.87rem;">
-        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
-            <b name="price">12</b>
+<span>ajax3</span>
+<input type="text" id="ajax3" value="">
+<span>ajax4</span>
+<input type="text" id="name" value="">
+<input type="button" onclick="search()" value="查询">
 
-        </div>
-        <div class="ssxs" hidden style="width:18.75rem;height: 5rem;background-color:salmon;">
-            <input type="number" value="0" name="cnt"/>
-        </div>
-    </li>
-    <li class="big" style="margin-bottom: 1.87rem;">
-        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
-            <b name="price">12</b>
-
-        </div>
-        <div class="ssxs" hidden style="width:18.75rem;height: 5rem;background-color:salmon;">
-            <input type="number" value="0" name="cnt"/>
-        </div>
-    </li>
-
-
-</ul>
 </body>
 <script type="text/javascript">
-    $(".big").on("click", function () {
-        //可见变不可见
-        if ($(this).children(".ssxs").is(':visible')) {
-            $(this).children(".ssxs").hide();
-            $(this).children(".djq").css('background-color', 'cadetblue');
-        } else {
-            $(this).children(".ssxs").show();
-            $(this).children(".djq").css('background-color', 'yellowgreen');
-        }
+    url = "http://localhost:8080/WebSupport/connect/";
+    // $.ajax({
+    //     type: 'POST',//请求类型
+    //     url: url + "put.do",//指令
+    //     data: {key: "ee",data:JSON.stringify({"asda":2,"sad":[0,5,8,7,4]})},
+    //     dataType: 'json',//传输协议(text)
+    //     success: function (data) {
+    //         console.log(data);
+    //     },
+    //     error: function (data) {
+    //         console.log("ajax失败");
+    //     },
+    // });
+    $.ajax({
+        type: 'POST',//请求类型
+        url: url + "getData.do",//指令
+        dataType: 'json',//传输协议(text)
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (data) {
+            console.log("ajax失败");
+        },
     });
 
-    //防止冒泡
-    $(".ssxs").on("click", function (event) {
-        event.stopPropagation();
-    });
-    //input框修改时的change事件
-    $("input").on("change", function () {
-        var sum = 0;
-        //选择ssxs可见的,input框
-        $(".ssxs:visible").each(function () {
-            var cnt = $(this).children("input[name='cnt']").val() * 1.0;
-            var djq = $(this).siblings('.djq').children("b[name='price']").html() * 1.0;
-            sum += cnt * djq;
-        });
-        console.log(sum);
-    })
 </script>
 </html>

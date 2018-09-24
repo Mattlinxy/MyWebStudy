@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../Support/jquery-1.11.3/jquery.js"></script>
+    <title></title>
+</head>
+<body>
+<ul>
+    <li class="big" style="margin-bottom: 1.87rem;">
+        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
+            <b name="price">12</b>
+
+        </div>
+        <div class="ssxs" hidden style="width:18.75rem;height: 5rem;background-color:salmon;">
+            <input type="number" value="0" name="cnt"/>
+        </div>
+    </li>
+    <li class="big" style="margin-bottom: 1.87rem;">
+        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
+            <b name="price">12</b>
+
+        </div>
+        <div class="ssxs" hidden style="width:18.75rem;height: 5rem;background-color:salmon;">
+            <input type="number" value="0" name="cnt"/>
+        </div>
+    </li>
+    <li class="big" style="margin-bottom: 1.87rem;">
+        <div class="djq" style="width: 18.75rem;height: 10.5rem;background-color: cadetblue;">
+            <b name="price">12</b>
+
+        </div>
+        <div class="ssxs" hidden style="width:18.75rem;height: 5rem;background-color:salmon;">
+            <input type="number" value="0" name="cnt"/>
+        </div>
+    </li>
+
+
+</ul>
+</body>
+<script type="text/javascript">
+    $(".big").on("click", function () {
+        //可见变不可见
+        if ($(this).children(".ssxs").is(':visible')) {
+            $(this).children(".ssxs").hide();
+            $(this).children(".djq").css('background-color', 'cadetblue');
+        } else {
+            $(this).children(".ssxs").show();
+            $(this).children(".djq").css('background-color', 'yellowgreen');
+        }
+    });
+
+    //防止冒泡
+    $(".ssxs").on("click", function (event) {
+        event.stopPropagation();
+    });
+    //input框修改时的change事件
+    $("input").on("change", function () {
+        var sum = 0;
+        //选择ssxs可见的,input框
+        $(".ssxs:visible").each(function () {
+            var cnt = $(this).children("input[name='cnt']").val() * 1.0;
+            var djq = $(this).siblings('.djq').children("b[name='price']").html() * 1.0;
+            sum += cnt * djq;
+        });
+        console.log(sum);
+    })
+</script>
+</html>
